@@ -25,7 +25,7 @@ class PredictionData():
             return content, self.sen_len
         else:
             pad_start = len(content)
-            tmp_zero = [self.EOS] * (self.sen_len - len(content))
+            tmp_zero = [self.EOS]       # * (self.sen_len - len(content))
             content.extend(tmp_zero)
             return content, pad_start
 

@@ -7,7 +7,7 @@ class QaEngine:
     def __init__(self):
         # 词汇表
         vo_file = 'qa/ai.vocab.txt'
-        self.sentence_len = 10
+        self.sentence_len = 80
         self.vo_size = 400
         self.batch_size = 1
 
@@ -50,6 +50,7 @@ if __name__ == "__main__":
 
     question = "什么是ai"
     qa = QaEngine()
-    qa.prediction(question)
+    answer = qa.prediction(question)
+    print(answer)
 
 
