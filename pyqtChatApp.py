@@ -127,6 +127,7 @@ class PyqtChatApp(QtGui.QSplitter):
     def qa_process(self, txt):
         print("qa resived" + txt)
         answer = self.qa.prediction(txt)
+        print(answer)
         return answer
 
     def send_to_queue(self, msg):
@@ -135,15 +136,19 @@ class PyqtChatApp(QtGui.QSplitter):
 
     @pyqtSlot(str)
     def sendTextMsg(self,txt):
-        print(txt)
         # display to chat
         self.msgList.addTextMsg(txt, False)
         # qa process
         qa_txt = self.qa_process(txt)
+        if qa_txt['class_id'] == 0:
+            qa_msg = qa_txt['answer']
+            msg = [txt, qa_msg]
+        else:
+            qa_msg = "听不懂! ------------------"
+            msg = [txt, qa_msg]
         # send to queue
-        msg = [txt, qa_txt]
         self.send_to_queue(msg)
-        self.msgList.addTextMsg(qa_txt, True)
+        self.msgList.addTextMsg(qa_msg, True)
 
 
 if __name__ == '__main__':
