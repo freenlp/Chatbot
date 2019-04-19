@@ -1,5 +1,5 @@
 ## Install Environment
-    bash /home/longriyao/sdb/test/first_version/build.sh
+    bash build.sh
     
     
 ## Run
