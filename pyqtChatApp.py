@@ -118,7 +118,7 @@ class PyqtChatApp(QtGui.QSplitter):
         self.msgList.setParent(rSpliter)
         self.msgInput.setParent(rSpliter)
         #setup qa
-        self.qa = QaEngine()
+        self.qa = QaEngine("qa/save_model/122_params.pkl", "qa/data/all_vocab.txt")
         # qa.prediction(question)
 
     def setDemoMsg(self):
@@ -145,6 +145,7 @@ class PyqtChatApp(QtGui.QSplitter):
             msg = [txt, qa_msg]
         else:
             qa_msg = "听不懂! ------------------"
+            qa_msg = qa_txt['answer']
             msg = [txt, qa_msg]
         # send to queue
         self.send_to_queue(msg)
